@@ -1,0 +1,22 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "NodeJS_ChatApp",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunstrike112/NodeJS_ChatApp.git"
+  },
+  "author": "BugCreator",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunstrike112/NodeJS_ChatApp/issues"
+  },
+  "homepage": "https://github.com/sunstrike112/NodeJS_ChatApp#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
