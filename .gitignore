@@ -25,4 +25,4 @@ yarn.lock
 package-lock.json
 
 .eslintcache
-.env
+sh/env.sh
