@@ -1,0 +1,13 @@
+{
+  "name": "bower_components",
+  "version": "1.0.1",
+  "authors": ["Bug Creator"],
+  "description": "Third lib for NodeJS_ChatApp",
+  "main": "src/server.js",
+  "keywords": ["awesome-chat-third-party-libraries"],
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
+  "license": "MIT",
+  "dependencies": {
+    "bower_components": "https://github.com/sunstrike112/awesome-chat-third-party-libraries.git"
+  }
+}
