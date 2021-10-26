@@ -1,7 +1,7 @@
-import mongoose from "mongoose"
-import bcrypt from "bcrypt"
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
-let Schema = mongoose.Schema
+let Schema = mongoose.Schema;
 
 let UserSchema = new Schema({
   username: String,
@@ -29,42 +29,46 @@ let UserSchema = new Schema({
   createdAt: { type: Number, default: Date.now },
   updatedAt: { type: Number, default: null },
   deletedAt: { type: Number, default: null },
-})
+});
 
 UserSchema.statics = {
   createNew(item) {
-    return this.create(item)
+    return this.create(item);
   },
 
   findByEmail(email) {
-    return this.findOne({ "local.email": email }).exec()
+    return this.findOne({ "local.email": email }).exec();
   },
 
   removeById(id) {
-    return this.findByIdAndRemove(id).exec()
+    return this.findByIdAndRemove(id).exec();
   },
 
   findByToken(token) {
-    return this.findOne({ "local.verifyToken": token }).exec()
+    return this.findOne({ "local.verifyToken": token }).exec();
   },
 
   verify(token) {
     return this.findOneAndUpdate(
       { "local.verifyToken": token },
       { "local.isActive": true, "local.verifyToken": null }
-    ).exec()
+    ).exec();
   },
 
   findUserById(id) {
-    return this.findById(id).exec()
-  }
-}
+    return this.findById(id).exec();
+  },
+
+  findByFacebookUid(uid) {
+    return this.findOne({ "facebook.uid": uid }).exec();
+  },
+};
 
 UserSchema.methods = {
   comparePassword(password) {
     // Return a promise has result TRUE or FALSE
-    return bcrypt.compare(password, this.local.password)
-  }
-}
+    return bcrypt.compare(password, this.local.password);
+  },
+};
 
-module.exports = mongoose.model("user", UserSchema)
+module.exports = mongoose.model("user", UserSchema);
