@@ -7,73 +7,73 @@ import connectFlash from "connect-flash";
 import configSession from "./config/session";
 import passport from "passport";
 
-import pem from "pem";
-import https from "https";
+// Init app
+const app = express();
 
-pem.config({
-  pathOpenSSL: "C:\\Program Files\\OpenSSL-Win64\\bin\\openssl",
+// Connect to MongoDb
+ConnectDB();
+
+// Config session
+configSession(app);
+
+// Config view engine
+configViewEngine(app);
+
+// Enable post data for request
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Enable flash messages
+app.use(connectFlash());
+
+// Config passport js
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Init all routes
+initRoutes(app);
+
+app.listen(process.env.APP_PORT, process.env.APP_HOST, () => {
+  console.log(`Hello Bug Creator, I am running at ${process.env.APP_HOST}: ${process.env.APP_PORT}/`);
 });
 
-pem.createCertificate({ days: 1, selfSigned: true }, function (err, keys) {
-  if (err) {
-    throw err;
-  }
-  // Init app
-  let app = express();
+// import pem from "pem";
+// import https from "https";
 
-  // Connect to MongoDb
-  ConnectDB();
+// pem.config({
+//   pathOpenSSL: "C:\\Program Files\\OpenSSL-Win64\\bin\\openssl",
+// });
 
-  // Config session
-  configSession(app);
+// pem.createCertificate({ days: 1, selfSigned: true }, function (err, keys) {
+//   if (err) {
+//     throw err;
+//   }
+//   // Init app
+//   let app = express();
 
-  // Config view engine
-  configViewEngine(app);
+//   // Connect to MongoDb
+//   ConnectDB();
 
-  // Enable post data for request
-  app.use(bodyParser.urlencoded({ extended: true }));
+//   // Config session
+//   configSession(app);
 
-  // Enable flash messages
-  app.use(connectFlash());
+//   // Config view engine
+//   configViewEngine(app);
 
-  // Config passport js
-  app.use(passport.initialize());
-  app.use(passport.session());
+//   // Enable post data for request
+//   app.use(bodyParser.urlencoded({ extended: true }));
 
-  // Init all routes
-  initRoutes(app);
-  https
-    .createServer({ key: keys.clientKey, cert: keys.certificate }, app)
-    .listen(process.env.APP_PORT, process.env.APP_HOST, () => {
-      console.log(`Hello Bug Creator, I am running at ${process.env.APP_HOST}: ${process.env.APP_PORT}/`);
-    });
-});
+//   // Enable flash messages
+//   app.use(connectFlash());
 
-// // Init app
-// const app = express();
+//   // Config passport js
+//   app.use(passport.initialize());
+//   app.use(passport.session());
 
-// // Connect to MongoDb
-// ConnectDB();
-
-// // Config session
-// configSession(app);
-
-// // Config view engine
-// configViewEngine(app);
-
-// // Enable post data for request
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-// // Enable flash messages
-// app.use(connectFlash());
-
-// // Config passport js
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// // Init all routes
-// initRoutes(app);
-
-// app.listen(process.env.APP_PORT, process.env.APP_HOST, () => {
-//   console.log(`Hello Bug Creator, I am running at ${process.env.APP_HOST}: ${process.env.APP_PORT}/`);
+//   // Init all routes
+//   initRoutes(app);
+//   https
+//     .createServer({ key: keys.clientKey, cert: keys.certificate }, app)
+//     .listen(process.env.APP_PORT, process.env.APP_HOST, () => {
+//       console.log(`Hello Bug Creator, I am running at ${process.env.APP_HOST}: ${process.env.APP_PORT}/`);
+//     });
 // });
