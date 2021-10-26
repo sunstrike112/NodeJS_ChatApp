@@ -66,6 +66,11 @@ UserSchema.statics = {
   findByGoogleUid(uid) {
     return this.findOne({ "google.uid": uid }).exec();
   },
+
+  updateUser(id, item) {
+    // Return old item after updated
+    return this.findByIdAndUpdate(id, item).exec();
+  },
 };
 
 UserSchema.methods = {

@@ -80,20 +80,40 @@ $(document).ready(function () {
       url: "/user/update-avatar",
       type: "put",
       cache: false,
-      contenType: false,
+      contentType: false,
       processData: false,
       data: userAvatar,
-      success: function (result) {},
-      error: function (error) {},
-    });
+      success: function (result) {
+        // Display success
+        $(".user-modal-alert-success").find("span").text(result.message);
+        $(".user-modal-alert-success").css("display", "block");
+        $(".user-modal-alert-error").css("display", "none");
 
-    // console.log(userAvatar);
-    // console.log(userInfo);
+        // Update avatar at navbar
+        $("#navbar-avatar").attr("src", result.imageSrc);
+
+        // Update origin avatar src
+        originAvatarSrc = result.imageSrc;
+
+        // Reset all
+        $("#input-btn-cancel-update-user").click();
+      },
+      error: function (error) {
+        // Display errors
+        $(".user-modal-alert-error").find("span").text(error.responseText);
+        $(".user-modal-alert-error").css("display", "block");
+        $(".user-modal-alert-success").css("display", "none");
+
+        // Reset all
+        $("#input-btn-cancel-update-user").click();
+      },
+    });
   });
 
   $("#input-btn-cancel-update-user").bind("click", function () {
     userInfo = null;
     userInfo = {};
+    $("#input-change-avatar").val(null);
     $("#user-modal-avatar").attr("src", originAvatarSrc);
   });
 });
