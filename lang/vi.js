@@ -8,11 +8,12 @@ export const transValidation = {
 export const transErrors = {
   account_in_use: "Email đã được sử dụng",
   account_removed: "Tài khoản này đã gỡ khỏi hệ thống, chi tiết xin liên hệ bộ phận CSKH",
-  account_not_active:
-    "Tài khoản chưa được kích hoạt, vui lòng kiểm tra email của bạn để kích hoạt tài khoản",
+  account_not_active: "Tài khoản chưa được kích hoạt, vui lòng kiểm tra email của bạn để kích hoạt tài khoản",
   token_undefined: "Token không tồn tại",
   login_failed: "Tài khoản hoặc mật khẩu không đúng",
   server_error: "Hệ thống đang gặp sự cố, vui lòng thử lại sau",
+  avatar_type: "Kiểu file không đúng định dạng .png, .jpg, .jpeg",
+  avatar_size: "Kích cỡ ảnh tối đa cho phép là 1 MB",
 };
 
 export const transSuccess = {
@@ -24,6 +25,7 @@ export const transSuccess = {
     return `Xin chào ${userName}, chúc bạn một ngày tốt lành`;
   },
   logout_successs: "Đăng xuất thành công",
+  avatar_updated: "Cập nhập thông tin thành công",
 };
 
 export const transMail = {
