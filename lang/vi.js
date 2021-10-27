@@ -3,6 +3,10 @@ export const transValidation = {
   gender_incorrect: "Giới tính bị sai",
   password_incorrect: "Mật khẩu chứa ít nhất 8 ký tự (gồm chữ hoa, thường, số và ký tự đặc biệt)",
   password_confirmation_incorrect: "Mật khẩu không khớp",
+  update_username: "Độ dài tên người dùng từ 3-17 ký tự và không chứa ký tự đặc biệt",
+  update_gender: "Dữ liệu giới tính sai",
+  update_address: "Địa chỉ giới hạn trong khoảng 3-30 ký tự",
+  update_phone: "Số điện thoại bắt đầu từ 0 và có độ dài tối đa 11",
 };
 
 export const transErrors = {
@@ -25,7 +29,8 @@ export const transSuccess = {
     return `Xin chào ${userName}, chúc bạn một ngày tốt lành`;
   },
   logout_successs: "Đăng xuất thành công",
-  avatar_updated: "Cập nhập thông tin thành công",
+  avatar_updated: "Cập nhập ảnh đại diện thành công",
+  user_info_updated: "Cập nhập thông tin thành công",
 };
 
 export const transMail = {
