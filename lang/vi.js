@@ -7,6 +7,7 @@ export const transValidation = {
   update_gender: "Dữ liệu giới tính sai",
   update_address: "Địa chỉ giới hạn trong khoảng 3-30 ký tự",
   update_phone: "Số điện thoại bắt đầu từ 0 và có độ dài tối đa 11",
+  keyword_find_user: "Từ khóa tìm kiếm không đúng định dạng",
 };
 
 export const transErrors = {

@@ -1,6 +1,6 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-let Schema = mongoose.Schema
+let Schema = mongoose.Schema;
 
 let ContactSchema = new Schema({
   userId: String,
@@ -9,12 +9,22 @@ let ContactSchema = new Schema({
   createdAt: { type: Number, default: Date.now },
   updatedAt: { type: Number, default: null },
   editedAt: { type: Number, default: null },
-})
+});
 
 ContactSchema.statics = {
   createNew(item) {
-    return this.create(item)
+    return this.create(item);
   },
-}
 
-module.exports = mongoose.model("contact", ContactSchema)
+  /**
+   * Find all items that related with user
+   * @param {string} userId
+   */
+  findAllByUser(userId) {
+    return this.find({
+      $or: [{ userId: userId }, { contactId: userId }],
+    }).exec();
+  },
+};
+
+module.exports = mongoose.model("contact", ContactSchema);

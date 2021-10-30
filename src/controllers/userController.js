@@ -90,8 +90,8 @@ let updateInfo = async (req, res) => {
 // Update user password
 let updatePassword = async (req, res) => {
   let errorArr = [];
-
   let validationError = validationResult(req);
+
   if (!validationError.isEmpty()) {
     let errors = Object.values(validationError.mapped());
     errors.forEach((item) => {
@@ -99,6 +99,7 @@ let updatePassword = async (req, res) => {
     });
     return res.status(500).send(errorArr);
   }
+
   try {
     let updateUserItem = req.body;
     await user.updatePassword(req.user._id, updateUserItem);
