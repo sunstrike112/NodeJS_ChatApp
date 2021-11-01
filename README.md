@@ -1,5 +1,7 @@
 # NodeJS_ChatApp
 
+Chat app with NodeJS and Ejs
+
 - bootstrap: **^3.3.7**
 - font-awesome **^4.7.0**
 - jquery **^3.3.1**
