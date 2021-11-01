@@ -15,3 +15,9 @@ Another library :
 - sweetalert2 **^7.33.1**
 - photoset-grid **^1.0.1**
 - jquery-colorbox **^1.6.4**
+
+## Installation
+
+Edit sh/env.sh and set the following variables:
+
+- source sh/env.sh
