@@ -1,6 +1,8 @@
 # NodeJS_ChatApp
 
-Chat app with NodeJS and Ejs
+Chat app with NodeJS, MongoDB, Ejs and Socket.IO
+
+Another library :
 
 - bootstrap: **^3.3.7**
 - font-awesome **^4.7.0**
