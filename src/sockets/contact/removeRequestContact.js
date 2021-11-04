@@ -4,22 +4,20 @@ import { pushSocketIdToArray, emitNotifySocketIdToArray, removeSocketIdToArray }
  *
  * @param io from socket.io library
  */
-let addNewContact = (io) => {
+let removeRequestContact = (io) => {
   let clients = {};
   io.on("connection", (socket) => {
-    // Push socket id to array
+    // Push socket to array
     clients = pushSocketIdToArray(clients, socket.request.user._id, socket.id);
 
-    socket.on("add-new-contact", (data) => {
+    socket.on("remove-request-contact", (data) => {
       let currentUser = {
         id: socket.request.user._id,
-        username: socket.request.user.username,
-        avatar: socket.request.user.avatar,
       };
 
       // Emit notification
       if (clients[data.contactId]) {
-        emitNotifySocketIdToArray(clients, data.contactId, io, "response-add-new-contact", currentUser);
+        emitNotifySocketIdToArray(clients, data.contactId, io, "response-remove-request-contact", currentUser);
       }
     });
 
@@ -30,4 +28,4 @@ let addNewContact = (io) => {
   });
 };
 
-module.exports = addNewContact;
+module.exports = removeRequestContact;
