@@ -5,7 +5,7 @@ function addContact() {
       if (data.success) {
         $("#find-user").find(`div.user-add-new-contact[data-uid=${targetId}]`).hide();
         $("#find-user").find(`div.user-remove-request-contact[data-uid=${targetId}]`).css("display", "inline-block");
-        increaseNumberNotifContact("count-request-contact-sent");
+        increaseNumberNotifContact("count-request-contact-sent", 1);
 
         socket.emit("add-new-contact", { contactId: targetId });
       }
@@ -22,6 +22,6 @@ socket.on("response-add-new-contact", function (user) {
   $("ul.list-notifications").prepend(`<li>${notif}</li>`);
 
   increaseNumberNotifContact("count-request-contact-received");
-  increaseNumberNotification("noti_contact_counter");
-  increaseNumberNotification("noti_counter");
+  increaseNumberNotification("noti_contact_counter", 1);
+  increaseNumberNotification("noti_counter", 1);
 });
