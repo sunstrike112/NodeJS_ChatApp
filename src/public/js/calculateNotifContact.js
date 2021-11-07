@@ -1,6 +1,6 @@
-function decreaseNumberNotifContact(className) {
+function decreaseNumberNotifContact(className, number) {
   let currentValue = +$(`.${className}`).find("em").text();
-  currentValue -= 1;
+  currentValue -= number;
 
   if (currentValue === 0) {
     $(`.${className}`).html("");
@@ -9,9 +9,9 @@ function decreaseNumberNotifContact(className) {
   }
 }
 
-function increaseNumberNotifContact(className) {
+function increaseNumberNotifContact(className, number) {
   let currentValue = +$(`.${className}`).find("em").text();
-  currentValue += 1;
+  currentValue += number;
 
   if (currentValue === 0) {
     $(`.${className}`).html("");
